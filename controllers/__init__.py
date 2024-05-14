@@ -9,3 +9,8 @@ from .publisher_controller import PublisherController
 from .visitor_controller import VisitorController
 from .visitor_photo_controller import VisitorPhotoController
 from .entry_log_controller import EntryLogController
+from .dashboard_controller import DashboardController
+from .member_controller import MemberController
+from .reserve_controller import ReserveController
+from .queue_controller import QueueController
+from .wishlist_controller import WishlistController

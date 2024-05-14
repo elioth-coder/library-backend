@@ -12,6 +12,11 @@ from routes import (
     visitor_route,
     visitor_photo_route,
     entry_log_route,
+    dashboard_route,
+    member_route,
+    reserve_route,
+    queue_route,
+    wishlist_route,
 )
 
 app = Flask(__name__)
@@ -33,6 +38,11 @@ app.register_blueprint(publisher_route, url_prefix='/api/publisher')
 app.register_blueprint(visitor_route, url_prefix='/api/visitor')
 app.register_blueprint(visitor_photo_route, url_prefix='/api/visitor_photo')
 app.register_blueprint(entry_log_route, url_prefix='/api/entry_log')
+app.register_blueprint(dashboard_route, url_prefix='/api/dashboard')
+app.register_blueprint(member_route, url_prefix='/api/member')
+app.register_blueprint(reserve_route, url_prefix='/api/reserve')
+app.register_blueprint(queue_route, url_prefix='/api/queue')
+app.register_blueprint(wishlist_route, url_prefix='/api/wishlist')
 
 if __name__ == "__main__":
-    app.run(debug=True, port=3000, host="0.0.0.0")
+    app.run(debug=True, port=4000, host="0.0.0.0")

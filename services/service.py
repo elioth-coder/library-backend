@@ -29,8 +29,14 @@ class Service:
     def get_one(self, column, value):
         return  self.repository.get_one(column, value)
 
+    def count(self):
+        return  self.repository.count()
+
     def search(self, query):
         return  self.repository.search(query)
 
     def search_by(self, column, query):
         return  self.repository.search_by(column, query)
+
+    def query(self, sql, params=[]):
+        return self.repository.query(sql, params)

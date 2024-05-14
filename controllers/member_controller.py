@@ -1,19 +1,45 @@
 from .controller import Controller
 from flask import request, jsonify
 
-class VisitorPhotoController(Controller):
+class MemberController(Controller):
     def __init__(self, service):
         super().__init__(service, [
-            'visitor_id',
-            'file',
+            'card_number',
+            'photo',
             'encoding',
+            'last_name',
+            'first_name',
+            'email',
+            'issue_date',
+            'expiration_date',
+            'year_level',
+            'course',
+            'campus',
+            'type',
+            'gender',
+            'birthday',
+            'status',
         ])
+        
 
     def add(self):
         item = {}
-        item['visitor_id'] = request.form.get('visitor_id')
-        item['file'] = self.service.save_image(request.form.get('base64_file'))
-        item['encoding'] = self.service.extract_encoding(item['file'])
+        item['photo'] = self.service.save_image(request.form.get('base64'))
+        item['encoding'] = self.service.extract_encoding(item['photo'])
+        item['last_name'] = request.form.get('last_name')
+        item['first_name'] = request.form.get('first_name')
+        item['gender'] = request.form.get('gender')
+        item['birthday'] = request.form.get('birthday')
+        item['card_number'] = request.form.get('card_number')
+        item['type'] = request.form.get('type')
+        item['email'] = request.form.get('email')
+        item['year_level'] = request.form.get('year_level')
+        item['course'] = request.form.get('course')
+        item['campus'] = request.form.get('campus')
+        item['issue_date'] = request.form.get('issue_date')
+        item['expiration_date'] = request.form.get('expiration_date')
+        item['status'] = 'Pending'
+
         item['id'] = self.service.add(item)
         item.pop('encoding')
 
@@ -26,44 +52,10 @@ class VisitorPhotoController(Controller):
 
         return response, 200
 
-    def update(self):
-        id = request.form.get('visitor_photo_id')
-        self.service.delete(id)
-        
-        item = {}
-        item['visitor_id'] = request.form.get('visitor_id')
-        item['file'] = self.service.save_image(request.form.get('base64_file'))
-        item['encoding'] = self.service.extract_encoding(item['file'])
-        item['id'] = self.service.add(item)
-        item.pop('encoding')
-
-        data = {
-            'status': 'success',
-            'message': 'Successfully updated.',
-            'item': item
-        }
-        response = jsonify(data)
-
-        return response, 200
-
-    def delete(self, id):
-        visitor_photo = self.service.get(id)
-
-        self.service.delete_image(visitor_photo['file'])
-        self.service.delete(id)
-
-        data = {
-            'status': 'success',
-            'message': 'Successfully deleted.',
-        }
-        response = jsonify(data)
-        
-        return response, 200
-
     def get_all(self):
         items = self.service.get_all()
         
-        for item in items, index:
+        for index, item in enumerate(items):
             item.pop('encoding')
             items[index] = item
 
@@ -75,6 +67,16 @@ class VisitorPhotoController(Controller):
         
         return response, 200
 
+    def get(self, id):
+        item = self.service.get(id)
+        if(item):
+            item.pop('encoding')
+        data = {
+            'status': 'success',
+            'item': item,
+        }
+        response = jsonify(data)
+        return response, 200
 
     def get_by(self): 
         column = request.args.get('column')

@@ -78,6 +78,15 @@ class Controller:
         response = jsonify(data)
         return response, 200
 
+    def count(self):
+        count = self.service.get(id)
+        data = {
+            'status': 'success',
+            'count': count,
+        }
+        response = jsonify(data)
+        return response, 200
+
     def get_all(self):
         items = self.service.get_all()
         data = {

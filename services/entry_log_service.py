@@ -1,8 +1,6 @@
 from .service import Service
-from repositories.visitor_photo_repository import VisitorPhotoRepository
-from .visitor_photo_service import VisitorPhotoService
-from repositories.visitor_repository import VisitorRepository
-from .visitor_service import VisitorService
+from repositories.member_repository import MemberRepository
+from .member_service import MemberService
 from tools.face_recognizer import FaceRecognizer
 from datetime import datetime
 import os
@@ -13,6 +11,7 @@ from PIL import Image
 from io import BytesIO
 import pickle
 import numpy as np
+from pathlib import Path
 
 class EntryLogService(Service):
     def __init__(self, repository):
@@ -31,21 +30,23 @@ class EntryLogService(Service):
         return filename
 
     def delete_image(self, filename): 
-        os.remove(os.path.join('static/uploads', filename))
+        file_path = Path(os.path.join('static/uploads', filename))
+        if file_path.exists():
+            os.remove(file_path)
 
-    def get_visitor_photos(self): 
-        visitor_photo_repository = VisitorPhotoRepository()
-        visitor_photo_service = VisitorPhotoService(visitor_photo_repository)
-        visitor_photos = visitor_photo_service.get_all()
+    def get_members(self): 
+        member_repository = MemberRepository()
+        member_service = MemberService(member_repository)
+        members = member_service.get_all()
 
-        return visitor_photos
+        return members
 
-    def get_visitor(self, visitor_id):
-        visitor_repository = VisitorRepository()
-        visitor_service = VisitorService(visitor_repository)
-        visitor = visitor_service.get(visitor_id)
+    def get_member(self, member_id):
+        member_repository = MemberRepository()
+        member_service = MemberService(member_repository)
+        member = member_service.get(member_id)
 
-        return visitor
+        return member
 
     def extract_encodings(self, photos):        
         encodings = []

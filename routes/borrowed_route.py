@@ -12,3 +12,4 @@ borrowed_route.add_url_rule('/<int:id>', 'get', borrowed_controller.get, methods
 borrowed_route.add_url_rule('/update', 'update', borrowed_controller.update, methods=['PUT'])
 borrowed_route.add_url_rule('/delete/<int:id>', 'delete', borrowed_controller.delete, methods=['DELETE'])
 borrowed_route.add_url_rule('/', 'get_all', borrowed_controller.get_all, methods=['GET'])
+borrowed_route.add_url_rule('/get_by/', 'get_by', borrowed_controller.get_by, methods=['GET'])

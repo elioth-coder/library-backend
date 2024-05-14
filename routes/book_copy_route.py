@@ -14,3 +14,4 @@ book_copy_route.add_url_rule('/delete/<int:id>', 'delete', book_copy_controller.
 book_copy_route.add_url_rule('/', 'get_all', book_copy_controller.get_all, methods=['GET'])
 book_copy_route.add_url_rule('/get_one/', 'get_one', book_copy_controller.get_one, methods=['GET'])
 book_copy_route.add_url_rule('/search/', 'search', book_copy_controller.search, methods=['GET'])
+book_copy_route.add_url_rule('/copies_count/', 'copies_count', book_copy_controller.copies_count, methods=['GET'])

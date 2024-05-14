@@ -8,7 +8,7 @@ import pickle
 from pathlib import Path
 
 
-class VisitorPhotoService(Service):
+class MemberService(Service):
     def __init__(self, repository):
         super().__init__(repository)
 
@@ -17,7 +17,7 @@ class VisitorPhotoService(Service):
         decoded_bytes = base64.b64decode(str.encode(data))
         current_time = datetime.now()
         current_milliseconds = int(current_time.timestamp() * 1000)
-        filename = 'visitor_photo' + str(current_milliseconds) + '.png'
+        filename = 'member' + str(current_milliseconds) + '.png'
 
         with open(os.path.join('static/uploads', filename), 'wb') as f:
             f.write(decoded_bytes)

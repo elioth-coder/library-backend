@@ -9,3 +9,8 @@ from .publisher_repository import PublisherRepository
 from .visitor_repository import VisitorRepository
 from .visitor_photo_repository import VisitorPhotoRepository
 from .entry_log_repository import EntryLogRepository
+from .dashboard_repository import DashboardRepository
+from .member_repository import MemberRepository
+from .reserve_repository import ReserveRepository
+from .queue_repository import QueueRepository
+from .wishlist_repository import WishlistRepository

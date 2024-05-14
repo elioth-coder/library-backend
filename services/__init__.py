@@ -9,3 +9,8 @@ from .publisher_service import PublisherService
 from .visitor_service import VisitorService
 from .visitor_photo_service import VisitorPhotoService
 from .entry_log_service import EntryLogService
+from .dashboard_service import DashboardService
+from .member_service import MemberService
+from .reserve_service import ReserveService
+from .queue_service import QueueService
+from .wishlist_service import WishlistService

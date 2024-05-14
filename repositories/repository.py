@@ -89,6 +89,17 @@ class Repository:
 
         return self.transform_result(result)
 
+    def count(self):
+        sql = f'SELECT COUNT(*) as `count` FROM `{self.table_name}`'
+
+        with self.connect() as db: 
+            with db.cursor(dictionary=True) as cursor: 
+                cursor.execute(sql)
+                result = cursor.fetchone()
+
+        return result['count']
+
+
     def get_all(self):
         sql = f'SELECT * FROM `{self.table_name}` ORDER BY `id` DESC'
 
@@ -187,4 +198,11 @@ class Repository:
         
         return result
 
-    
+    def query(self, sql, params=[]):
+        with self.connect() as db: 
+            with db.cursor(dictionary=True) as cursor: 
+                cursor.execute(sql, params)
+                results = cursor.fetchall()
+                print(cursor.statement)
+
+        return self.transform_results(results)

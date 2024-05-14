@@ -9,4 +9,8 @@ from .publisher_route import publisher_route
 from .visitor_route import visitor_route
 from .visitor_photo_route import visitor_photo_route
 from .entry_log_route import entry_log_route
-
+from .dashboard_route import dashboard_route
+from .member_route import member_route
+from .reserve_route import reserve_route
+from .queue_route import queue_route
+from .wishlist_route import wishlist_route

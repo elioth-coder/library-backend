@@ -13,3 +13,5 @@ book_route.add_url_rule('/update', 'update', book_controller.update, methods=['P
 book_route.add_url_rule('/delete/<int:id>', 'delete', book_controller.delete, methods=['DELETE'])
 book_route.add_url_rule('/', 'get_all', book_controller.get_all, methods=['GET'])
 book_route.add_url_rule('/search/', 'search', book_controller.search, methods=['GET'])
+book_route.add_url_rule('/authors/', 'authors', book_controller.authors, methods=['GET'])
+book_route.add_url_rule('/count/', 'count', book_controller.count, methods=['GET'])
