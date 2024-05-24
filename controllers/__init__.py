@@ -14,3 +14,6 @@ from .member_controller import MemberController
 from .reserve_controller import ReserveController
 from .queue_controller import QueueController
 from .wishlist_controller import WishlistController
+from .report_controller import ReportController
+from .campus_controller import CampusController
+from .setting_controller import SettingController

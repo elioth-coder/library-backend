@@ -14,3 +14,6 @@ from .member_route import member_route
 from .reserve_route import reserve_route
 from .queue_route import queue_route
 from .wishlist_route import wishlist_route
+from .report_route import report_route
+from .campus_route import campus_route
+from .setting_route import setting_route

@@ -12,7 +12,7 @@ class Repository:
         yield self.connector.create_connection()
 
     def columns(self):
-        sql = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{self.table_name}'"
+        sql = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{self.table_name}' AND TABLE_SCHEMA = 'library'"
         with self.connect() as db: 
             with db.cursor() as cursor: 
                 cursor.execute(sql)
@@ -99,6 +99,18 @@ class Repository:
 
         return result['count']
 
+    def count_by(self, column, value):
+        sql = f'SELECT COUNT(*) as `count` FROM `{self.table_name}` WHERE `{column}`=%(value)s'
+        params = {
+            'value': value,
+        }
+        with self.connect() as db: 
+            with db.cursor(dictionary=True) as cursor: 
+                cursor.execute(sql, params)
+                result = cursor.fetchone()
+
+        return result['count']
+
 
     def get_all(self):
         sql = f'SELECT * FROM `{self.table_name}` ORDER BY `id` DESC'
@@ -148,6 +160,7 @@ class Repository:
         columns = self.columns()
         sql = f"SELECT * FROM `{self.table_name}` WHERE "
         sql += " OR ".join(map(lambda column: f"`{column}` LIKE %(query)s", columns))
+        print(sql)
 
         params = {
             'query': f'%{query}%',
@@ -156,6 +169,7 @@ class Repository:
             with db.cursor(dictionary=True) as cursor: 
                 cursor.execute(sql, params)
                 results = cursor.fetchall()
+                print(cursor.statement)
 
         return self.transform_results(results)
     

@@ -14,3 +14,6 @@ from .member_repository import MemberRepository
 from .reserve_repository import ReserveRepository
 from .queue_repository import QueueRepository
 from .wishlist_repository import WishlistRepository
+from .report_repository import ReportRepository
+from .campus_repository import CampusRepository
+from .setting_repository import SettingRepository

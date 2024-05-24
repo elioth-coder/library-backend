@@ -13,3 +13,5 @@ wishlist_route.add_url_rule('/update', 'update', wishlist_controller.update, met
 wishlist_route.add_url_rule('/delete/<int:id>', 'delete', wishlist_controller.delete, methods=['DELETE'])
 wishlist_route.add_url_rule('/', 'get_all', wishlist_controller.get_all, methods=['GET'])
 wishlist_route.add_url_rule('/search/', 'search', wishlist_controller.search, methods=['GET'])
+wishlist_route.add_url_rule('/count/', 'count', wishlist_controller.count, methods=['GET'])
+wishlist_route.add_url_rule('/get_by/', 'get_by', wishlist_controller.get_by, methods=['GET'])

@@ -1,9 +1,8 @@
 from .controller import Controller
 
-class WishlistController(Controller):
+class SettingController(Controller):
     def __init__(self, service):
         super().__init__(service, [
-            'book_id',
-            'member_id',
-            'wished_date',
+            'property',
+            'value',
         ])

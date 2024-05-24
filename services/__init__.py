@@ -14,3 +14,6 @@ from .member_service import MemberService
 from .reserve_service import ReserveService
 from .queue_service import QueueService
 from .wishlist_service import WishlistService
+from .report_service import ReportService
+from .campus_service import CampusService
+from .setting_service import SettingService

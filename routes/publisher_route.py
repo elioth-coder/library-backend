@@ -14,3 +14,4 @@ publisher_route.add_url_rule('/delete/<int:id>', 'delete', publisher_controller.
 publisher_route.add_url_rule('/', 'get_all', publisher_controller.get_all, methods=['GET'])
 publisher_route.add_url_rule('/search/', 'search', publisher_controller.search, methods=['GET'])
 publisher_route.add_url_rule('/search_by/', 'search_by', publisher_controller.search_by, methods=['GET'])
+publisher_route.add_url_rule('/count/', 'count', publisher_controller.count, methods=['GET'])

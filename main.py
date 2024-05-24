@@ -17,6 +17,9 @@ from routes import (
     reserve_route,
     queue_route,
     wishlist_route,
+    report_route,
+    campus_route,
+    setting_route,
 )
 
 app = Flask(__name__)
@@ -43,6 +46,9 @@ app.register_blueprint(member_route, url_prefix='/api/member')
 app.register_blueprint(reserve_route, url_prefix='/api/reserve')
 app.register_blueprint(queue_route, url_prefix='/api/queue')
 app.register_blueprint(wishlist_route, url_prefix='/api/wishlist')
+app.register_blueprint(report_route, url_prefix='/api/report')
+app.register_blueprint(campus_route, url_prefix='/api/campus')
+app.register_blueprint(setting_route, url_prefix='/api/setting')
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000, host="0.0.0.0")

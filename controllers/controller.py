@@ -79,7 +79,27 @@ class Controller:
         return response, 200
 
     def count(self):
-        count = self.service.get(id)
+        count = self.service.count()
+        data = {
+            'status': 'success',
+            'count': count,
+        }
+        response = jsonify(data)
+        return response, 200
+
+    def count_by(self): 
+        column = request.args.get('column')
+        value = request.args.get('value')
+
+        if column not in self.columns:
+            data = {
+                'status': 'error',
+                'message': 'Invalid column',
+            }
+            response = jsonify(data)
+            return response, 200
+
+        count = self.service.count_by(column, value)
         data = {
             'status': 'success',
             'count': count,

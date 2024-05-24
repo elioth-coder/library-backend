@@ -15,3 +15,6 @@ reserve_route.add_url_rule('/', 'get_all', reserve_controller.get_all, methods=[
 reserve_route.add_url_rule('/search/', 'search', reserve_controller.search, methods=['GET'])
 reserve_route.add_url_rule('/get_by/', 'get_by', reserve_controller.get_by, methods=['GET'])
 reserve_route.add_url_rule('/delete_by/', 'delete_by', reserve_controller.delete_by, methods=['DELETE'])
+reserve_route.add_url_rule('/count/', 'count', reserve_controller.count, methods=['GET'])
+reserve_route.add_url_rule('/count_by/', 'count_by', reserve_controller.count_by, methods=['GET'])
+

@@ -13,3 +13,4 @@ author_route.add_url_rule('/update', 'update', author_controller.update, methods
 author_route.add_url_rule('/delete/<int:id>', 'delete', author_controller.delete, methods=['DELETE'])
 author_route.add_url_rule('/', 'get_all', author_controller.get_all, methods=['GET'])
 author_route.add_url_rule('/search/', 'search', author_controller.search, methods=['GET'])
+author_route.add_url_rule('/count/', 'count', author_controller.count, methods=['GET'])

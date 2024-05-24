@@ -32,6 +32,9 @@ class Service:
     def count(self):
         return  self.repository.count()
 
+    def count_by(self, column, value):
+        return  self.repository.count_by(column, value)
+
     def search(self, query):
         return  self.repository.search(query)
 

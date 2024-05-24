@@ -19,9 +19,10 @@ class MemberController(Controller):
             'gender',
             'birthday',
             'status',
+            'reason',
+            'user_id',
         ])
         
-
     def add(self):
         item = {}
         item['photo'] = self.service.save_image(request.form.get('base64'))
@@ -39,6 +40,7 @@ class MemberController(Controller):
         item['issue_date'] = request.form.get('issue_date')
         item['expiration_date'] = request.form.get('expiration_date')
         item['status'] = 'Pending'
+        item['user_id'] = request.form.get('user_id')
 
         item['id'] = self.service.add(item)
         item.pop('encoding')
@@ -91,12 +93,14 @@ class MemberController(Controller):
 
             return response, 200
 
-        item = self.service.get_by(column, value)
-        if(item):
+        items = self.service.get_by(column, value)
+        for index, item in enumerate(items):
             item.pop('encoding')
+            items[index] = item
+
         data = {
             'status': 'success',
-            'item': item,
+            'items': items,
         }
         response = jsonify(data)
 
