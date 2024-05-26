@@ -7,7 +7,7 @@ class ReportController(Controller):
 
     def books_inventory(self):
         sql = """
-        SELECT `isbn`, `title`,
+        SELECT *,
             (SELECT COUNT(*) FROM `book_copy` WHERE `book_id`=`book`.`id` AND `status`='Available') AS `available`,
             (SELECT COUNT(*) FROM `book_copy` WHERE `book_id`=`book`.`id`  AND `status`='Borrowed') AS `borrowed`,
             (SELECT COUNT(*) FROM `book_copy` WHERE `book_id`=`book`.`id`  AND `status`='Damaged') AS `damaged`,

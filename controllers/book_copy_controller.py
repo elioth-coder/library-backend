@@ -12,6 +12,16 @@ class BookCopyController(Controller):
             'date_added',           
         ])
 
+    def get_all(self):
+        sql = "SELECT *, (SELECT `isbn` FROM `book` WHERE `id`=`book_id`) AS `isbn`, (SELECT `title` FROM `book` WHERE `id`=`book_id`) AS `title`, (SELECT `publication_year` FROM `book` WHERE `id`=`book_id`) AS `publication_year` FROM `book_copy`"
+        items = self.service.query(sql)
+        data = {
+            'status': 'success',
+            'items': items,
+        }
+        response = jsonify(data)
+        return response, 200
+
     def copies_count(self):
         book_id = request.args.get('book_id')
         status = request.args.get('status')

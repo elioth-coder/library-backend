@@ -9,11 +9,11 @@ class BookController(Controller):
             'isbn',
             'publication_year',
             'genre',            
-            'publisher_id',            
+            'publisher',            
             'page_count',            
             'language',            
             'edition',            
-            'synopsis',            
+            'author',            
         ])
 
     def add(self):
@@ -23,11 +23,11 @@ class BookController(Controller):
         item['isbn'] = request.form.get('isbn')
         item['publication_year'] = request.form.get('publication_year')
         item['genre'] = request.form.get('genre')
-        item['publisher_id'] = request.form.get('publisher_id')
+        item['publisher'] = request.form.get('publisher')
         item['page_count'] = request.form.get('page_count')
         item['language'] = request.form.get('language')
         item['edition'] = request.form.get('edition')
-        item['synopsis'] = request.form.get('synopsis')
+        item['author'] = request.form.get('author')
         item['id'] = self.service.add(item)
         data = {
             'status': 'success',
@@ -46,11 +46,11 @@ class BookController(Controller):
         item['isbn'] = request.form.get('isbn')
         item['publication_year'] = request.form.get('publication_year')
         item['genre'] = request.form.get('genre')
-        item['publisher_id'] = request.form.get('publisher_id')
         item['page_count'] = request.form.get('page_count')
         item['language'] = request.form.get('language')
         item['edition'] = request.form.get('edition')
-        item['synopsis'] = request.form.get('synopsis')
+        item['author'] = request.form.get('author')
+        item['publisher'] = request.form.get('publisher')
         item['id'] = request.form.get('id')
         self.service.update(item)
         data = {
