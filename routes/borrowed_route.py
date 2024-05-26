@@ -14,5 +14,6 @@ borrowed_route.add_url_rule('/delete/<int:id>', 'delete', borrowed_controller.de
 borrowed_route.add_url_rule('/', 'get_all', borrowed_controller.get_all, methods=['GET'])
 borrowed_route.add_url_rule('/get_by/', 'get_by', borrowed_controller.get_by, methods=['GET'])
 borrowed_route.add_url_rule('/get_borrowed/', 'get_borrowed', borrowed_controller.get_borrowed, methods=['GET'])
+borrowed_route.add_url_rule('/get_returned/', 'get_returned', borrowed_controller.get_returned, methods=['GET'])
 borrowed_route.add_url_rule('/get_borrowed_by/', 'get_borrowed_by', borrowed_controller.get_borrowed_by, methods=['GET'])
 borrowed_route.add_url_rule('/get_returned_by/', 'get_returned_by', borrowed_controller.get_returned_by, methods=['GET'])

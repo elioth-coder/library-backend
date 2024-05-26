@@ -20,7 +20,8 @@ app = Flask(__name__)
 app.secret_key = 'mansibang'
 CORS(
     app, 
-    resources={r"/*": {"origins": "http://localhost:5173"}}, 
+    # resources={r"/*": {"origins": "http://localhost:5173"}}, 
+    resources={r"/*": {"origins": "*"}}, 
     supports_credentials=True
 )
 

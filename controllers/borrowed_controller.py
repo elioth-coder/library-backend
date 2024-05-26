@@ -12,6 +12,17 @@ class BorrowedController(Controller):
             'penalty',    
         ])
 
+    def get_returned(self): 
+        sql = "SELECT * FROM `borrowed` WHERE `returned_date` IS NOT NULL"
+        results = self.service.query(sql)
+
+        data = {
+            'status' : 'success',
+            'results': results,
+        }
+        response = jsonify(data)
+        return response, 200
+
     def get_borrowed(self): 
         sql = "SELECT * FROM `borrowed` WHERE `returned_date` IS NULL"
         results = self.service.query(sql)
